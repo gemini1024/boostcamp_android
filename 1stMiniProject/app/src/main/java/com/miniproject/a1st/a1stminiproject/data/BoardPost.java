@@ -8,13 +8,13 @@ import java.util.ArrayList;
  */
 
 public class BoardPost {
-    String title;               // 제목
-    String time;                // 작성 시간
-    String content;             // 내용
-    String attachUrl;           // 첨부 이미지 URL
-    ArrayList<String> comments; // 댓글 리스트
-    int numFavorite;            // 좋아요 수
-    int numView;                // 조회수
+    private String title;               // 제목
+    private String time;                // 작성 시간
+    private String content;             // 내용
+    private String attachUrl;           // 첨부 이미지 URL
+    private ArrayList<String> comments; // 댓글 리스트
+    private int numFavorite;            // 좋아요 수
+    private int numView;                // 조회수
 
     public BoardPost(String title, String time, String content, String attachUrl, ArrayList<String> comments, int numFavorite, int numView) {
         this.title = title;

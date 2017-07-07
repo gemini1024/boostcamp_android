@@ -48,6 +48,7 @@ public class BoardFragment extends Fragment {
         ButterKnife.bind(this, view);
 
         // 글 추가 (DUMMY_DATA)
+        // new BoardPost(제목, 작성시간, 내용, 첨부이미지)
         DUMMY_BOARDS = new ArrayList<>();
         DUMMY_BOARDS.add(new BoardPost("<b><font color=black>비디오머그1 - VIDEO MUG</font></b>님이 방송을 종료했습니다.", "2시간",
                 "[비디오머그 라이브1] 최순실 딸 정유라 강제송환\n\n☞ 고화질 감상 https://youtu.be/XjLDue4kpRk", null));
@@ -72,7 +73,7 @@ public class BoardFragment extends Fragment {
 
 
     // 게시글 RecyclerView Adapter
-    public class BoardListAdapter extends RecyclerView.Adapter<BoardListAdapter.BoardViewHolder> {
+    protected class BoardListAdapter extends RecyclerView.Adapter<BoardListAdapter.BoardViewHolder> {
         private ArrayList<BoardPost> boardPosts;
 
         public BoardListAdapter(ArrayList<BoardPost> boardPosts) {

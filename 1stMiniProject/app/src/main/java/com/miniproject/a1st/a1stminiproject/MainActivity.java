@@ -19,17 +19,19 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
-    static final int MENU_BOARD_PAGE = 0;
-    static final int MENU_FRIENDS_PAGE = 1;
-    static final int MENU_NOTIFICATION_PAGE = 2;
-    static final int MENU_MORE_PAGE = 3;
-    static final int MENU_PAGE_SIZE = 4;
+
+    // MENU
+    public static final int MENU_BOARD_PAGE         = 0;
+    public static final int MENU_FRIENDS_PAGE       = 1;
+    public static final int MENU_NOTIFICATION_PAGE  = 2;
+    public static final int MENU_MORE_PAGE          = 3;
+    public static final int MENU_PAGE_SIZE          = 4;
+
 
     @BindView(R.id.board_viewpager) ViewPager mMenuPager;
     @BindView(R.id.navigation) BottomNavigationView mNavigation;
 
-
-    // ViewPager Listener
+    // ViewPager Adapter
     private class MenuPagerAdapter extends FragmentPagerAdapter {
         public MenuPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -38,11 +40,11 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
             switch (position) {
-                case MENU_BOARD_PAGE: return new BoardFragment();
-                case MENU_FRIENDS_PAGE: return new FriendsFragment();
-                case MENU_NOTIFICATION_PAGE: return new NotificationFragment();
-                case MENU_MORE_PAGE: return new MoreFragment();
-                default: return null;
+                case MENU_BOARD_PAGE:           return new BoardFragment();
+                case MENU_FRIENDS_PAGE:         return new FriendsFragment();
+                case MENU_NOTIFICATION_PAGE:    return new NotificationFragment();
+                case MENU_MORE_PAGE:            return new MoreFragment();
+                default:                        return null;
             }
         }
 
@@ -118,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
         mNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         mMenuPager.setAdapter(new MenuPagerAdapter(getSupportFragmentManager()));
         mMenuPager.addOnPageChangeListener(mOnPageChangeListener);
-        mMenuPager.setCurrentItem(0);
+        mMenuPager.setCurrentItem(MENU_BOARD_PAGE);
     }
 
 
