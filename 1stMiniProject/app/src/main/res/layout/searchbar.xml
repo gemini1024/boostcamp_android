@@ -7,8 +7,8 @@
         android:id="@+id/searchbar_camera"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="@dimen/half_unit_dimen"
+        android:layout_marginRight="@dimen/half_unit_dimen"
         android:src="@drawable/ic_camera"
         android:scaleType="fitCenter"
         android:background="@android:color/transparent"/>
@@ -23,17 +23,17 @@
         android:maxLines="1"
         android:imeOptions="actionSearch"
         android:textColor="@android:color/white"
-        android:hint="검색"
+        android:hint="@string/search"
         android:textColorHint="#aaffffff"
         android:drawableLeft="@drawable/ic_search"
-        android:drawablePadding="10dp"/>
+        android:drawablePadding="@dimen/half_unit_dimen"/>
 
     <ImageButton
         android:id="@+id/searchbar_messenger"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="@dimen/half_unit_dimen"
+        android:layout_marginRight="@dimen/half_unit_dimen"
         android:src="@drawable/ic_messenger"
         android:scaleType="fitCenter"
         android:background="@android:color/transparent"/>
@@ -41,8 +41,8 @@
         android:id="@+id/searchbar_info"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="@dimen/half_unit_dimen"
+        android:layout_marginRight="@dimen/half_unit_dimen"
         android:src="@drawable/ic_info"
         android:scaleType="fitCenter"
         android:background="@android:color/transparent"/>

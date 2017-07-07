@@ -5,6 +5,12 @@
     <string name="menu_notification">Notification</string>
     <string name="menu_more">More</string>
 
+    <string name="search">검색</string>
+    <string name="header_live">인기 라이브 방송</string>
+
+    <string name="dummy_board_item_share_num">1만</string>
+    <string name="dummy_board_item_act_num">댓글 9,689개 공유 397회 조회 32만회</string>
+
     <string name="board_item_favorite">좋아요</string>
     <string name="board_item_comment">댓글 달기</string>
     <string name="board_item_share">공유하기</string>

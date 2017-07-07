@@ -31,59 +31,19 @@ public class BoardPost {
         this(title, time, content, attachUrl, null, 0, 0);
     }
 
+
+    // 17.7.7
+    // 사용하지 않는 메소드 제거
     public String getTitle() {
         return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getTime() {
         return time;
     }
 
-    public void setTime(String title) {
-        this.time = time;
-    }
-
     public String getContent() {
         return content;
     }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public String getAttachUrl() {
-        return attachUrl;
-    }
-
-    public void setAttachUrl(String attachUrl) {
-        this.attachUrl = attachUrl;
-    }
-
-    public ArrayList<String> getComments() {
-        return comments;
-    }
-
-    public void setComments(ArrayList<String> comments) {
-        this.comments = comments;
-    }
-
-    public int getNumFavorite() {
-        return numFavorite;
-    }
-
-    public void setNumFavorite(int numFavorite) {
-        this.numFavorite = numFavorite;
-    }
-
-    public int getNumView() {
-        return numView;
-    }
-
-    public void setNumView(int numView) {
-        this.numView = numView;
-    }
 }
