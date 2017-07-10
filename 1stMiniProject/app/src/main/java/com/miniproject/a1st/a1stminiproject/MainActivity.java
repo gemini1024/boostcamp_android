@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        public boolean onNavigationItemSelected(@NonNull MenuItem item /* null 이 인자가 될 수 없음*/) {
             switch (item.getItemId()) {
                 case R.id.navigation_board:
                     mMenuPager.setCurrentItem(MENU_BOARD_PAGE);
@@ -88,8 +88,9 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onPageSelected(int position) {
-            for(int i=0; i<mNavigation.getChildCount(); i++)
+            for(int i=0; i<mNavigation.getChildCount(); i++) {
                 mNavigation.getMenu().getItem(i).setChecked(false);
+            }
             mNavigation.getMenu().getItem(position).setChecked(true);
         }
 
@@ -130,13 +131,13 @@ public class MainActivity extends AppCompatActivity {
     void OnSearchBarButtonClick(View view) {
         switch (view.getId()) {
             case R.id.searchbar_camera :
-                Toast.makeText(this, "카메라 클릭함.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.toolbar_camera)+getString(R.string.clicked_footer), Toast.LENGTH_SHORT).show();
                 break;
             case R.id.searchbar_messenger :
-                Toast.makeText(this, "메신저 클릭함.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.toolbar_messenger)+getString(R.string.clicked_footer), Toast.LENGTH_SHORT).show();
                 break;
             case R.id.searchbar_info :
-                Toast.makeText(this, "회원정보 클릭함.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.toolbar_info)+getString(R.string.clicked_footer), Toast.LENGTH_SHORT).show();
                 break;
         }
     }

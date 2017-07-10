@@ -5,9 +5,18 @@
     <string name="menu_notification">Notification</string>
     <string name="menu_more">More</string>
 
+    <string name="toolbar_camera">카메라</string>
+    <string name="toolbar_messenger">메신저</string>
+    <string name="toolbar_info">회원정보</string>
+
     <string name="search">검색</string>
+    <string name="clicked_footer">\u0020클릭함.</string>
     <string name="header_live">인기 라이브 방송</string>
 
+    <string name="dummy_board_item_title_author">비디오머그1 - VIDEO MUG</string>
+    <string name="dummy_board_item_title_footer">님이 방송을 종료했습니다.</string>
+    <string name="dummy_board_item_time">시간</string>
+    <string name="dummy_board_item_content">[비디오머그 라이브1] 최순실 딸 정유라 강제송환\n\n☞ 고화질 감상 https://youtu.be/XjLDue4kpRk</string>
     <string name="dummy_board_item_share_num">1만</string>
     <string name="dummy_board_item_act_num">댓글 9,689개 공유 397회 조회 32만회</string>
 

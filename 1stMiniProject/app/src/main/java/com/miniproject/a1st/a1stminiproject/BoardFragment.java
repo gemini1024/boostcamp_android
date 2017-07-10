@@ -34,7 +34,7 @@ public class BoardFragment extends Fragment {
     RecyclerView mBoardList;
 
     private BoardListAdapter mBoardListAdapter;
-    private ArrayList<BoardPost> DUMMY_BOARDS;
+    private ArrayList<BoardPost> dummyBoards;
 
     public BoardFragment() {
         // Required empty public constructor
@@ -49,20 +49,23 @@ public class BoardFragment extends Fragment {
 
         // 글 추가 (DUMMY_DATA)
         // new BoardPost(제목, 작성시간, 내용, 첨부이미지)
-        DUMMY_BOARDS = new ArrayList<>();
-        DUMMY_BOARDS.add(new BoardPost("<b><font color=black>비디오머그1 - VIDEO MUG</font></b>님이 방송을 종료했습니다.", "2시간",
-                "[비디오머그 라이브1] 최순실 딸 정유라 강제송환\n\n☞ 고화질 감상 https://youtu.be/XjLDue4kpRk", null));
-        DUMMY_BOARDS.add(new BoardPost("<b><font color=black>비디오머그2 - VIDEO MUG</font></b>님이 방송을 종료했습니다.", "3시간",
-                "[비디오머그 라이브2] 최순실 딸 정유라 강제송환\n\n☞ 고화질 감상 https://youtu.be/XjLDue4kpRk", null));
-        DUMMY_BOARDS.add(new BoardPost("<b><font color=black>비디오머그3 - VIDEO MUG</font></b>님이 방송을 종료했습니다.", "4시간",
-                "[비디오머그 라이브3] 최순실 딸 정유라 강제송환\n\n☞ 고화질 감상 https://youtu.be/XjLDue4kpRk", null));
-        Collections.sort(DUMMY_BOARDS, new Comparator<BoardPost>() {
+        dummyBoards = new ArrayList<>();
+        dummyBoards.add(new BoardPost("<b><font color=black>"+ getString(R.string.dummy_board_item_title_author)+"1</font></b>" +
+                getString(R.string.dummy_board_item_title_footer), 2+getString(R.string.dummy_board_item_time),
+                getString(R.string.dummy_board_item_content), null));
+        dummyBoards.add(new BoardPost("<b><font color=black>"+ getString(R.string.dummy_board_item_title_author)+"2</font></b>" +
+                getString(R.string.dummy_board_item_title_footer), 3+getString(R.string.dummy_board_item_time),
+                getString(R.string.dummy_board_item_content), null));
+        dummyBoards.add(new BoardPost("<b><font color=black>"+ getString(R.string.dummy_board_item_title_author)+"3</font></b>" +
+                getString(R.string.dummy_board_item_title_footer), 4+getString(R.string.dummy_board_item_time),
+                getString(R.string.dummy_board_item_content), null));
+        Collections.sort(dummyBoards, new Comparator<BoardPost>() {
             @Override
             public int compare(BoardPost o1, BoardPost o2) {
                 return o1.getTime().compareTo(o2.getTime());
             }
         });
-        mBoardListAdapter = new BoardListAdapter(DUMMY_BOARDS);
+        mBoardListAdapter = new BoardListAdapter(dummyBoards);
 
         // RecyclerView 설정
         mBoardList.setHasFixedSize(true);
@@ -92,10 +95,11 @@ public class BoardFragment extends Fragment {
             BoardPost item = boardPosts.get(position);
 
             // TITLE 에는 HTML TAG (굵은 글씨, 색상) 적용
-            if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N)
+            if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
                 holder.titleView.setText(Html.fromHtml(item.getTitle(), Html.FROM_HTML_MODE_LEGACY));
-            else
+            } else {
                 holder.titleView.setText(Html.fromHtml(item.getTitle()));
+            }
             holder.timeView.setText(item.getTime());
             holder.contentView.setText(item.getContent());
         }
@@ -116,11 +120,12 @@ public class BoardFragment extends Fragment {
             // OnClick Methods
             @OnClick({R.id.board_item_bt_favorite_mini, R.id.board_item_bt_favorite})
             void OnFavoriteClick(View view) {
-                Toast.makeText(getContext(), "좋아요 클릭함.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.board_item_favorite)+getString(R.string.clicked_footer)
+                        , Toast.LENGTH_SHORT).show();
             }
             @OnClick({R.id.board_item_bt_comment, R.id.board_item_bt_share})
             void OnItemButtonClick(Button button) {
-                Toast.makeText(getContext(), button.getText()+" 클릭함.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), button.getText()+getString(R.string.clicked_footer), Toast.LENGTH_SHORT).show();
             }
 
             public BoardViewHolder(View itemView) {
