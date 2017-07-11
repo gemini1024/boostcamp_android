@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.miniproject.a2nd.a2ndminiproject.MainActivity"
     android:orientation="vertical"
     android:background="@android:color/background_light">
@@ -12,7 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="?attr/actionBarSize"
-        android:background="?attr/colorPrimary">
+        android:background="?attr/colorPrimary"
+        app:title="@string/toolbar_title"
+        app:collapseIcon="@android:drawable/ic_menu_compass"
+        app:navigationIcon="@drawable/ic_dehaze_black_24dp">
 
     </android.support.v7.widget.Toolbar>
 
@@ -26,18 +30,27 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:text="@string/sort_distance"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
             android:background="@android:color/transparent"/>
         <Button
             android:id="@+id/bt_sort_rank"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:text="@string/sort_rank"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
             android:background="@android:color/transparent"/>
         <Button
             android:id="@+id/bt_sort_time"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:text="@string/sort_time"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
             android:background="@android:color/transparent"/>
 
         <ImageButton

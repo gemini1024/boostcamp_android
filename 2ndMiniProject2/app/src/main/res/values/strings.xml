@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">2ndMiniProject</string>
+    
+    <string name="toolbar_title">맛집리스트</string>
+    <string name="sort_distance">거리순</string>
+    <string name="sort_rank">인기순</string>
+    <string name="sort_time">최근순</string>
 </resources>

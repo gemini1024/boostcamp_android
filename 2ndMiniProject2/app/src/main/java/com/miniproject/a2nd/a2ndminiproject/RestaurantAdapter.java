@@ -1,11 +1,19 @@
 package com.miniproject.a2nd.a2ndminiproject;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+import com.miniproject.a2nd.a2ndminiproject.data.Restaurant;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -15,20 +23,42 @@ import butterknife.ButterKnife;
  */
 
 public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.RestaurantViewHolder> {
+    private Context context;
+    private ArrayList<Restaurant> restaurants;
+
+    public RestaurantAdapter(Context context, ArrayList<Restaurant> restaurants) {
+        this.context = context;
+        this.restaurants = restaurants;
+    }
 
     @Override
     public RestaurantViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_restaurant, parent, false);
+        return new RestaurantViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(RestaurantViewHolder holder, int position) {
+        final Restaurant item = restaurants.get(position);
 
+        Glide.with(context).load(item.getImageId()).into(holder.imageView);
+        holder.nameView.setText(item.getName());
+        holder.checkBox.setChecked(item.isChecked());
+        holder.checkBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                item.setChecked(!item.isChecked());
+            }
+        });
+        holder.contentView.setText(item.getContent()
+                +"\n거리 : "+item.getDistance()
+                +"\n인기 : "+item.getRank()
+                +"\n등록 시간: "+new SimpleDateFormat("yyyy-MM-dd, hh:mm:ss").format(item.getTime()));
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return restaurants.size();
     }
 
     class RestaurantViewHolder extends RecyclerView.ViewHolder {
