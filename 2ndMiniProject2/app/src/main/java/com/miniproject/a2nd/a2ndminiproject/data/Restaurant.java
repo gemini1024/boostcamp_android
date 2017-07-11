@@ -1,22 +1,24 @@
 package com.miniproject.a2nd.a2ndminiproject.data;
 
-import java.io.Serializable;
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Date;
 
 /**
  * Created by jh on 17. 7. 10.
  */
 
-public class Restaurant implements Serializable {
+public class Restaurant implements Parcelable {
     private String name;
     private String content;
     private int imageId;
     private boolean checked;
-    private long distance;
+    private int distance;
     private int rank;
     private Date time;
 
-    public Restaurant(String name, String content, int imageId, boolean checked, long distance, int rank, Date time) {
+    public Restaurant(String name, String content, int imageId, boolean checked, int distance, int rank, Date time) {
         this.name = name;
         this.content = content;
         this.imageId = imageId;
@@ -26,28 +28,38 @@ public class Restaurant implements Serializable {
         this.time = time;
     }
 
-    public String getName() {
-        return name;
+    private Restaurant(Parcel in) {
+        name = in.readString();
+        content = in.readString();
+        imageId = in.readInt();
+        checked = in.readByte() != 0;
+        distance = in.readInt();
+        rank = in.readInt();
+        time = (Date)in.readSerializable();
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public static final Creator<Restaurant> CREATOR = new Creator<Restaurant>() {
+        @Override
+        public Restaurant createFromParcel(Parcel in) {
+            return new Restaurant(in);
+        }
+
+        @Override
+        public Restaurant[] newArray(int size) {
+            return new Restaurant[size];
+        }
+    };
+
+    public String getName() {
+        return name;
     }
 
     public String getContent() {
         return content;
     }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
-
     public int getImageId() {
         return imageId;
-    }
-
-    public void setImageId(int imageId) {
-        this.imageId = imageId;
     }
 
     public boolean isChecked() {
@@ -58,27 +70,31 @@ public class Restaurant implements Serializable {
         this.checked = checked;
     }
 
-    public long getDistance() {
+    public int getDistance() {
         return distance;
-    }
-
-    public void setDistance(long distance) {
-        this.distance = distance;
     }
 
     public int getRank() {
         return rank;
     }
 
-    public void setRank(int rank) {
-        this.rank = rank;
-    }
-
     public Date getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
-        this.time = time;
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeString(content);
+        dest.writeInt(imageId);
+        dest.writeByte((byte)(checked ? 1 : 0));
+        dest.writeInt(distance);
+        dest.writeInt(rank);
+        dest.writeSerializable(time);
     }
 }

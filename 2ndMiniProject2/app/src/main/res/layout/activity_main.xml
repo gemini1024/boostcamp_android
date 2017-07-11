@@ -25,33 +25,31 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical">
 
-        <Button
-            android:id="@+id/bt_sort_distance"
+        <android.support.design.widget.TabLayout
+            android:id="@+id/sort_tab"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/sort_distance"
-            android:textStyle="bold"
-            android:textColor="@android:color/black"
-            android:background="@android:color/transparent"/>
-        <Button
-            android:id="@+id/bt_sort_rank"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/sort_rank"
-            android:textStyle="bold"
-            android:textColor="@android:color/black"
-            android:background="@android:color/transparent"/>
-        <Button
-            android:id="@+id/bt_sort_time"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/sort_time"
-            android:textStyle="bold"
-            android:textColor="@android:color/black"
-            android:background="@android:color/transparent"/>
+            app:tabTextColor="@android:color/black"
+            app:tabSelectedTextColor="@android:color/holo_green_light"
+            app:tabTextAppearance="@style/TextAppearance.AppCompat.Menu"
+            app:tabIndicatorHeight="0dp"
+            app:tabGravity="fill"
+            app:tabMode="fixed">
+
+            <android.support.design.widget.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sort_distance" />
+            <android.support.design.widget.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sort_rank" />
+            <android.support.design.widget.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sort_time" />
+        </android.support.design.widget.TabLayout>
 
         <ImageButton
             android:id="@+id/bt_view_change"
