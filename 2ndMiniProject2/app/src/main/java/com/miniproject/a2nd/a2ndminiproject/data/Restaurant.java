@@ -1,22 +1,19 @@
 package com.miniproject.a2nd.a2ndminiproject.data;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import java.util.Date;
 
 /**
  * Created by jh on 17. 7. 10.
  */
 
-public class Restaurant implements Parcelable {
-    private String name;
-    private String content;
-    private int imageId;
-    private boolean checked;
-    private int distance;
-    private int rank;
-    private Date time;
+public class Restaurant {
+    private String name;        // 이름
+    private String content;     // 내용
+    private int imageId;        // 이미지 resource id
+    private boolean checked;    // 체크박스 체크여부
+    private int distance;       // 거리
+    private int rank;           // 인기
+    private Date time;          // 작성시간
 
     public Restaurant(String name, String content, int imageId, boolean checked, int distance, int rank, Date time) {
         this.name = name;
@@ -27,28 +24,6 @@ public class Restaurant implements Parcelable {
         this.rank = rank;
         this.time = time;
     }
-
-    private Restaurant(Parcel in) {
-        name = in.readString();
-        content = in.readString();
-        imageId = in.readInt();
-        checked = in.readByte() != 0;
-        distance = in.readInt();
-        rank = in.readInt();
-        time = (Date)in.readSerializable();
-    }
-
-    public static final Creator<Restaurant> CREATOR = new Creator<Restaurant>() {
-        @Override
-        public Restaurant createFromParcel(Parcel in) {
-            return new Restaurant(in);
-        }
-
-        @Override
-        public Restaurant[] newArray(int size) {
-            return new Restaurant[size];
-        }
-    };
 
     public String getName() {
         return name;
@@ -80,21 +55,5 @@ public class Restaurant implements Parcelable {
 
     public Date getTime() {
         return time;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(name);
-        dest.writeString(content);
-        dest.writeInt(imageId);
-        dest.writeByte((byte)(checked ? 1 : 0));
-        dest.writeInt(distance);
-        dest.writeInt(rank);
-        dest.writeSerializable(time);
     }
 }

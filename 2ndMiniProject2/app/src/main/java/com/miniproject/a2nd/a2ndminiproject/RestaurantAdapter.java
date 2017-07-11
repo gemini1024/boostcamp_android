@@ -51,9 +51,9 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
             }
         });
         holder.contentView.setText(item.getContent()
-                +"\n거리 : "+item.getDistance()
-                +"\n인기 : "+item.getRank()
-                +"\n등록 시간: "+new SimpleDateFormat("yyyy-MM-dd, hh:mm:ss").format(item.getTime()));
+                +"\n"+context.getString(R.string.label_distance)+item.getDistance()
+                +"\n"+context.getString(R.string.label_rank)+item.getRank()
+                +"\n"+context.getString(R.string.label_time)+new SimpleDateFormat("yyyy-MM-dd a hh:mm:ss").format(item.getTime()));
     }
 
     @Override

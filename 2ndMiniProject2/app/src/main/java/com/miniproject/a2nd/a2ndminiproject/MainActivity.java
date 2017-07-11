@@ -20,11 +20,6 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
-    // For savedInstanceState
-    private static final String RESTAURANTS_KEY = "RESTAURANTS_KEY";
-    private static final String SORT_TYPE_KEY = "SORT_TYPE_KEY";
-
-
     @BindView(R.id.sort_tab)
     TabLayout mSortTabs;
     @BindView(R.id.restaurant_list)
@@ -32,18 +27,14 @@ public class MainActivity extends AppCompatActivity {
 
     private RestaurantAdapter mRestaurantAdapter;
     private ArrayList<Restaurant> mRestaurants;
-    private int mSortType;
 
 
     // TabLayout Listener ( 정렬 )
     private TabLayout.OnTabSelectedListener mTabSelectedListener = new TabLayout.OnTabSelectedListener() {
         @Override
         public void onTabSelected(TabLayout.Tab tab) {
-            if(mRestaurantAdapter != null) {
-                mSortType = tab.getPosition();
-                Collections.sort(mRestaurants, SortComparators.getSortComparator(mSortType));
-                mRestaurantAdapter.notifyDataSetChanged();
-            }
+            Collections.sort(mRestaurants, SortComparators.getSortComparator(tab.getPosition()));
+            mRestaurantAdapter.notifyDataSetChanged();
         }
 
         @Override
@@ -68,17 +59,9 @@ public class MainActivity extends AppCompatActivity {
         // TabLayout Listener 적용
         mSortTabs.addOnTabSelectedListener(mTabSelectedListener);
 
-        if(savedInstanceState == null || !savedInstanceState.containsKey(RESTAURANTS_KEY)) {
-            // mRestaurants, mSortType 데이터 생성
-            mRestaurants = makeDummyDate();
-            mSortType = SortComparators.SORT_DISTANCE;
-            Collections.sort(mRestaurants, SortComparators.getSortComparator(mSortType));
-        } else {
-            // mRestaurants, mSortType 상태 불러오기
-            mRestaurants = savedInstanceState.getParcelableArrayList(RESTAURANTS_KEY);
-            mSortType = savedInstanceState.getInt(SORT_TYPE_KEY);
-            mSortTabs.getTabAt(mSortType).select();
-        }
+        // mRestaurants 데이터 생성
+        mRestaurants = makeDummyDate();
+        Collections.sort(mRestaurants, SortComparators.getSortComparator(SortComparators.SORT_DISTANCE));
 
         // RecyclerView 설정
         mRestaurantAdapter = new RestaurantAdapter(this, mRestaurants);
@@ -108,13 +91,6 @@ public class MainActivity extends AppCompatActivity {
         return dummyDatas;
     }
 
-    // mRestaurants, mSortType 상태 저장
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        outState.putParcelableArrayList(RESTAURANTS_KEY, mRestaurants);
-        outState.putInt(SORT_TYPE_KEY, mSortType);
-        super.onSaveInstanceState(outState);
-    }
 
     // RecyclerView 레이아웃 형태 변경
     @OnClick(R.id.bt_view_change)
